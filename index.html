@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust | Explore the World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Wander<span>lust</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#about">About</a></li>
+            <li>
+    <label class="switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider round"></span>
+    </label>
+</li>
+            <li><a href="#contact" class="btn">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Adventure Awaits</h1>
+            <p>Discover the most beautiful places on earth with us.</p>
+            <a href="#destinations" class="hero-btn">Explore More</a>
+        </div>
+    </header>
+
+    <section id="destinations" class="destinations">
+        <h2>Popular Destinations</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1506929113675-b9299d39bb14?q=80&w=400&h=300&fit=crop" alt="Beach">
+                <div class="card-info">
+                    <h3>Bali, Indonesia</h3>
+                    <p>Tropical paradise with lush jungles and clear waters.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8bef99c02?q=80&w=400&h=300&fit=crop" alt="Mountains">
+                <div class="card-info">
+                    <h3>Swiss Alps</h3>
+                    <p>Experience the peak of luxury and adventure.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=400&h=300&fit=crop" alt="Venice">
+                <div class="card-info">
+                    <h3>Venice, Italy</h3>
+                    <p>The city of canals, history, and romance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="packages-section">
+    <h2>Available Packages</h2>
+    <div class="table-container">
+        <table class="package-table">
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Duration</th>
+                    <th>Includes</th>
+                    <th>Price</th>
+                    <th>Special Offer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bali, Indonesia</td>
+                    <td>5 Days, 4 Nights</td>
+                    <td>Hotel, Flight, Breakfast</td>
+                    <td>$899</td>
+                    <td><span class="tag">Popular</span></td>
+                </tr>
+                <tr class="highlight">
+                    <td>Swiss Alps</td>
+                    <td>7 Days, 6 Nights</td>
+                    <td>Resort, Skiing, All Meals</td>
+                    <td>$1,450</td>
+                    <td><span class="tag birthday">Birthday Special</span></td>
+                </tr>
+                <tr>
+                    <td>Venice, Italy</td>
+                    <td>4 Days, 3 Nights</td>
+                    <td>Guided Tour, Hotel</td>
+                    <td>$750</td>
+                    <td><span class="tag">Early Bird</span></td>
+                </tr>
+                <tr>
+                    <td>Kyoto, Japan</td>
+                    <td>6 Days, 5 Nights</td>
+                    <td>Train Pass, Hotel, Tours</td>
+                    <td>$1,100</td>
+                    <td><span class="tag">Limited</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+    <div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="toggleModal()">&times;</span>
+        <h2>Welcome Back</h2>
+        <form>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="hero-btn">Login</button>
+        </form>
+    </div>
+</div>
+
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+    <footer>
+        <p>&copy; 2025 Wanderlust Travel Co. | Designed for College Project</p>
+    </footer>
+     <div class="reveal"><section id="destinations" class="destinations reveal"> ... </section>
+<section id="packages" class="packages-section reveal"> ... </section>
+<section id="contact" class="contact-section reveal"> ... </section>
+</div>
+
+</body>
+<script>
+    function toggleModal() {
+        const modal = document.getElementById('loginModal');
+        if (modal.style.display === 'block') {
+            modal.style.display = 'none';
+        } else {
+            modal.style.display = 'block';
+        }
+    }
+
+    // Change the "Book Now" button in the Nav to trigger Login
+    document.querySelector('.btn').onclick = function(e) {
+        e.preventDefault();
+        toggleModal();
+    }
+    const toggleSwitch = document.querySelector('#theme-toggle');
+
+toggleSwitch.addEventListener('change', () => {
+    if (toggleSwitch.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+});
+
+window.addEventListener('scroll', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 150;
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('active');
+        }
+    }
+});
+</script>
+</html>
